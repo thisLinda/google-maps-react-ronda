@@ -7,8 +7,11 @@ class App extends Component {
 		return (
 			<div className="App">
 				<MapContainer
-					/*markers={this.state.markers}
-					showInfoWindow={this.state.showInfoWindow}*/
+					markers={this.state.markers}
+					showInfoWindow={this.state.showInfoWindow}
+					onMarkerClick={this.state.onMarkerClick}
+					activeMarker={this.state.activeMarker}
+					selectedVenue={this.state.selectedVenue}
 				/>
 			</div>
 		);
