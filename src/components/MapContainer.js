@@ -12,7 +12,7 @@ export class MapContainer extends Component {
 		showInfoWindow: false,
 		activeMarker: {},
     selectedVenue: {},
-    markers: locations,
+    markers: locations
   }
 
 	onMarkerClick = (props, marker, event) =>
