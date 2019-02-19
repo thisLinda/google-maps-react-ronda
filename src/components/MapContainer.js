@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import locations from "../locations.json";
 
-const mapStyle = {
-	width: "100%",
-	height: "100%"
-};
-
 export class MapContainer extends Component {
 	state = {
 		showInfoWindow: false,
 		activeMarker: {},
-    selectedVenue: {},
-    markers: locations
-  }
+		selectedVenue: {},
+		markers: locations
+	};
+
+	componentDidMount() {
+		window.gm_authFailure = () => {
+			this.setState({ mapError: true });
+		};
+	}
 
 	onMarkerClick = (props, marker, event) =>
 		this.setState({
@@ -32,31 +33,33 @@ export class MapContainer extends Component {
 	};
 
 	render() {
+		const style = {
+			height: "100vh",
+			width: "100vw"
+		};
 		return (
-      <div className="mapcontainer">
-        <Map
-          google={this.props.google}
-          zoom={16}
-          style={mapStyle}
-          initialCenter={{
-            lat: 36.7421339,
-            lng: -5.1665916
-          }}
-        >
-          <Marker 
-            onClick={this.props.onMarkerClick}
-            name={this.state.marker} />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedVenue.name}</h4>
-            </div>
-          </InfoWindow>
-        </Map>
-      </div>
+			<div className="mapcontainer">
+				<Map
+					google={this.props.google}
+					zoom={16}
+					style={style}
+					initialCenter={{
+						lat: 36.7421339,
+						lng: -5.1665916
+					}}
+				>
+					<Marker onClick={this.props.onMarkerClick} name={this.state.marker} />
+					<InfoWindow
+						marker={this.state.activeMarker}
+						visible={this.state.showInfoWindow}
+						onClose={this.onClose}
+					>
+						<div>
+							<h4>{this.state.selectedVenue.name}</h4>
+						</div>
+					</InfoWindow>
+				</Map>
+			</div>
 		);
 	}
 }
