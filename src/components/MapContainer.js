@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
-import locations from "../locations.json";
+import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
+//import locations from "../locations.json";
 
 export class MapContainer extends Component {
-	state = {
+	/*state = {
 		showInfoWindow: false,
 		activeMarker: {},
 		selectedVenue: {},
 		markers: locations
-	};
+	};*/
 
 	componentDidMount() {
 		window.gm_authFailure = () => {
@@ -49,7 +49,7 @@ export class MapContainer extends Component {
 					}}
 				>
 					<Marker onClick={this.props.onMarkerClick} name={this.state.marker} />
-					<InfoWindow
+					{/*<InfoWindow
 						marker={this.state.activeMarker}
 						visible={this.state.showInfoWindow}
 						onClose={this.onClose}
@@ -57,7 +57,7 @@ export class MapContainer extends Component {
 						<div>
 							<h4>{this.state.selectedVenue.name}</h4>
 						</div>
-					</InfoWindow>
+					</InfoWindow>*/}
 				</Map>
 			</div>
 		);

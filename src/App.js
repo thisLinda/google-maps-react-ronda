@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import MapContainer from "./components/MapContainer";
-//import locations from "./locations";
+import locations from "./locations";
 
 class App extends Component {
+  state = {
+    showInfoWindow: false,
+    activeMarker: {},
+    selectedVenue: {},
+    markers: locations
+  };
+
 	render() {
 		return (
 			<div className="App">
