@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import MapContainer from "./components/MapContainer";
 import locations from "./locations";
+//import SideBar from "./components/SideBar.js";
 
 class App extends Component {
   state = {

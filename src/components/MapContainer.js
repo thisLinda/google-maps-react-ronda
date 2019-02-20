@@ -10,12 +10,12 @@ export class MapContainer extends Component {
 		markers: locations
   };*/
 
-	componentDidMount() {
+	/*componentDidMount() {
 		window.gm_authFailure = () => {
 			this.setState({ mapError: true });
 		};
 	}
-
+*/
 	onMarkerClick = (props, marker, event) =>
 		this.setState({
 			selectedVenue: props,
