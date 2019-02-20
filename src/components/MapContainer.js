@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 //import locations from "../locations.json";
 
 export class MapContainer extends Component {
@@ -8,7 +8,7 @@ export class MapContainer extends Component {
 		activeMarker: {},
 		selectedVenue: {},
 		markers: locations
-	};*/
+  };*/
 
 	componentDidMount() {
 		window.gm_authFailure = () => {
@@ -34,9 +34,10 @@ export class MapContainer extends Component {
 
 	render() {
 		const style = {
-			height: "100vh",
-			width: "100vw"
-		};
+    height: '100vh',
+    width: '100vw'
+  };
+
 		return (
 			<div className="mapcontainer">
 				<Map
@@ -48,16 +49,18 @@ export class MapContainer extends Component {
 						lng: -5.1665916
 					}}
 				>
-					<Marker onClick={this.props.onMarkerClick} name={this.state.marker} />
-					{/*<InfoWindow
-						marker={this.state.activeMarker}
-						visible={this.state.showInfoWindow}
+					<Marker 
+						onClick={this.onMarkerClick} 
+						name={this.props.marker} />
+					<InfoWindow
+						marker={this.props.activeMarker}
+						visible={this.props.showInfoWindow}
 						onClose={this.onClose}
 					>
 						<div>
-							<h4>{this.state.selectedVenue.name}</h4>
+							<h4>{this.props.selectedVenue.name}</h4>
 						</div>
-					</InfoWindow>*/}
+					</InfoWindow>
 				</Map>
 			</div>
 		);
