@@ -3,6 +3,23 @@ import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 //import locations from "../locations.json";
 
 export class MapContainer extends Component {
+	/*handleClick = (venue) => {
+		const { marker, InfoWindow } = venue;
+
+		this.state.venues.forEach(({ marker: m, InfoWindow: i }) => {
+			if (m === marker) {
+				marker.setAnimation(window.google.maps.Animation.BOUNCE);
+				InfoWindow.open(marker.map, marker);
+
+				window.google.maps.event.addListener(InfoWindow, 'closeclick', function () {
+					marker.setAnimation(null);
+				});
+			} else {
+				m.setAnimation('none');
+				i.close();
+			}
+		});
+	};*/
 	/*state = {
 		showInfoWindow: false,
 		activeMarker: {},
@@ -49,18 +66,20 @@ export class MapContainer extends Component {
 						lng: -5.1665916
 					}}
 				>
-					<Marker 
-						onClick={this.onMarkerClick} 
-						name={this.props.marker} />
-					<InfoWindow
-						marker={this.props.activeMarker}
-						visible={this.props.showInfoWindow}
-						onClose={this.onClose}
-					>
-						<div>
-							<h4>{this.props.selectedVenue.name}</h4>
-						</div>
-					</InfoWindow>
+					{this.props.markers.map((marker) => 
+						<Marker 
+							onClick={this.onMarkerClick} 
+							name={this.state.marker} />
+					)}
+						<InfoWindow
+							marker={this.props.activeMarker}
+							visible={this.props.showInfoWindow}
+							onClose={this.onClose}
+						>
+							<div>
+								<h4>{this.props.selectedVenue.name}</h4>
+							</div>
+						</InfoWindow>
 				</Map>
 			</div>
 		);
