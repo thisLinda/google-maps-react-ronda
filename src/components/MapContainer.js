@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
 //import locations from "../locations.json";
 
 export class MapContainer extends Component {
+	//code session with Danny J. Smith
 	/*handleClick = (venue) => {
 		const { marker, InfoWindow } = venue;
 
@@ -20,6 +21,7 @@ export class MapContainer extends Component {
 			}
 		});
 	};*/
+
 	/*state = {
 		showInfoWindow: false,
 		activeMarker: {},
@@ -66,12 +68,12 @@ export class MapContainer extends Component {
 						lng: -5.1665916
 					}}
 				>
-					{this.props.markers.map((marker) => 
+					{this.props.markers.map((markers) => 
 						<Marker 
 							onClick={this.onMarkerClick} 
-							name={this.state.marker} />
+							name={this.props.markers} />
 					)}
-						<InfoWindow
+						{/*<InfoWindow
 							marker={this.props.activeMarker}
 							visible={this.props.showInfoWindow}
 							onClose={this.onClose}
@@ -79,7 +81,7 @@ export class MapContainer extends Component {
 							<div>
 								<h4>{this.props.selectedVenue.name}</h4>
 							</div>
-						</InfoWindow>
+						//</Map></InfoWindow>*/}
 				</Map>
 			</div>
 		);

@@ -19,7 +19,7 @@ class SideBar extends Component {
       this.setState({ selectedVenues: locations})
     }
     else {
-      const filteredVenues = this.props.places.filter((place) => place.name.toLowerCase().includes(query.toLowerCase()));
+      const filteredVenues = this.props.markers.filter((marker) => locations.name.toLowerCase().includes(query.toLowerCase()));
       this.setState({ selectedVenues: filteredVenues });
     }
   }
@@ -52,7 +52,7 @@ class SideBar extends Component {
               )}
             </ul>
         </div>
-          <div id="map"><MapContainer places={this.state.selectedVenues} setActiveMarker={this.setActiveMarker}/></div>
+          <div id="map"><MapContainer markers={this.state.selectedVenues} setActiveMarker={this.setActiveMarker}/></div>
       </div>
     )
   }
