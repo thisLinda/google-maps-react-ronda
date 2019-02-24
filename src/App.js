@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SideBar2 from "./components/SideBar2";
 
+
 class App extends Component {
 state = {
 		places: [

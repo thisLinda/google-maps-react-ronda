@@ -1,73 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ 
+A Note About the Project (bootstrapped with create-react-app)
+This repo is the final student project for Udacity's Front-End Web Development course. One of the positive aspects from being so behind in the course was the ability to learn from others as they progressed through this project for months before me. I learned a lot from what they shared on Slack creating a rather large gist for later reference--certainly useful. My decision to utilize the Google-Maps-React library was a direct result of putting the experiences of others to work for me.
 
+## Online resources
 
+In addition to review of my gist and picking the brains of my cohort on our Slack channel I watched several student/instructor tutorials and reviewed online sources.
 
-
+Doug Brown Udacity study jam walkthrough https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be
+Ryan Waite Udacity walkthrough https://www.youtube.com/watch?v=LvQe7xrUh7I&index=6&list=PLKC17wty6rS1XVZbRlWjYU0WVsIoJyO3s&t=0s
+Forrest Walker Udacity walkthrough https://www.youtube.com/watch?v=ktc8Gp9jD1k&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP
+https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
+https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
 https://www.npmjs.com/package/react-responsive-modal
-## Available Scripts
 
-In the project directory, you can run:
+## Dependencies
 
-### `npm start`
+Create-React-app
+React
+Google Maps API
+Foursquare API
 
-Runs the app in the development mode.<br>
+## Setup
+
+Clone this repo from
+Run `npm install`
+Run `npm start`
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The default service worker is used in this app and only works in production build.
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

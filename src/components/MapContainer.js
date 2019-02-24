@@ -3,13 +3,21 @@ import { Map, Marker, InfoWindow, GoogleApiWrapper }
 from "google-maps-react";
 import Modal from "react-responsive-modal";
 
+const FS_CLIENT = "BOKLBSA405VVTBJBRYXPUVIBARKGSHCIKX23JCBSZYOO25WY";
+const FS_SECRET = "VMCWHSF3WDJPJP1FUHQCICHWGIAZGWM1XNQ3BHQJDKYB2RO5";
+const FS_VERSION = "20190224";
+let places;
+
 class MapContainer extends Component {
 	state = {
 		showInfoWindow: false,
 		activeMarker: {},
 		animation: null,
 		open: false,
-		//selectedVenue: {},
+		lat: 36.7421339,
+		lon: -5.1665916,
+		zoom: 14,
+		selectedVenue: {},
 		//markers: locations
   };
 
@@ -44,17 +52,31 @@ class MapContainer extends Component {
 		});
 	};
 
-/*
-	setBounds = () => {
-		let bounds = new this.props.google.maps.LatLngBounds();
-		for (let i = 0; i < this.props.places.length; i++)
-			bounds.extend(this.props.places[i].pos);
-		this.setState({ bounds })
-	}
-*/
-	componentDidMount() {
-		//this.setBounds();
-	}
+	//adapted from Doug Brown instructed code
+	componentDidMount = () => {
+		let URL = `https://api.foursquare.com/v2/venues/${places[0].id}/photos?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`;
+			let headers = new Headers();
+			let request = new Request(URL, {
+				method: "GET",
+				headers
+			});
+			fetch(request)
+				.then(response => response.json())
+				.then(json => {
+					const places = json.response.venues;
+					this.setState(
+						{
+							places: places,
+							searchedPlaces: places
+						},
+						() => console.log(this.state)
+					);
+				})
+				.catch(error => {
+					alert("no response from FourSquare");
+				}
+			);
+  	};
 
 	onClose = props => {
 		if (this.state.showInfoWindow) {
