@@ -1,35 +1,17 @@
 import React, { Component } from "react";
-import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 
 class MapContainer extends Component {
-	//const placesToDisplay: [];
-	//code session with Danny J. Smith
-	/*handleClick = (venue) => {
-		const { marker, InfoWindow } = venue;
-
-		this.state.venues.forEach(({ marker: m, InfoWindow: i }) => {
-			if (m === marker) {
-				marker.setAnimation(window.google.maps.Animation.BOUNCE);
-				InfoWindow.open(marker.map, marker);
-
-				window.google.maps.event.addListener(InfoWindow, 'closeclick', function () {
-					marker.setAnimation(null);
-				});
-			} else {
-				m.setAnimation('none');
-				i.close();
-			}
-		});
-	};*/
-
 	state = {
 		showInfoWindow: false,
-		activeMarker: {}
+		activeMarker: {},
+		animation: null,
+		//open: false,
 		//selectedVenue: {},
 		//markers: locations
   };
 
-	onMarkerClick = (props, marker) => {
+	onMarkerClick = (props, marker, event) => {
 		this.setState({
 			//selectedVenue: props,
 			activeMarker: marker,
@@ -38,7 +20,7 @@ class MapContainer extends Component {
 	}
 
 
-		componentDidMount() {
+	componentDidMount() {
 	}
 
 	onClose = props => {
@@ -70,16 +52,33 @@ class MapContainer extends Component {
 				>
 					{this.props.places.map((placeName, index) => 
 						<Marker 
-							ref={placeName.title}
-							title={placeName.title}
+							ref={placeName.name}
+							name={placeName.name}
 							key={index}
-							name={placeName.name} //dr
-							onClick={this.onMarkerClick} 
+							onClick={this.onMarkerClick}
+							animation={this.state.activeMarker.name === placeName.name ? this.props.google.maps.Animation.BOUNCE : null} 
 							/>
 					)}
+				<InfoWindow
+					marker={this.state.activeMarker}
+					onClose={() => this.setState({showInfoWindow: false})}
+					hide={this.state.showInfoWindow} >
+						<div
+							className="info-window-content">
+							<h2 tabIndex="0" style={{textAlign:"center"}}>
+								{this.state.activeMarker.name}
+							</h2>
+							{this.state.photo === "pic loading"} ?
+								<h3 tabIndex="0" style={{textAlign:"center"}}>Pic Loading</h3> :
+								this.state.photo === "error" ?
+								<h3 tabIndex="0" style={{textAlign:"center"}}>Unable to load</h3>
+								<div style={{textAlign: "center"}}>
+									<img tabIndex="0" src={this.state.photo} alt={this.state.activeMarker.name + ' photo'} />
+								</div>
+							</div>
+						</InfoWindow>
 				</Map>
-			//</div>
-		);
+			);
 	}
 }
 
