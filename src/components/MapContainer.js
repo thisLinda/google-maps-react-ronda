@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
 //import locations from "../locations.json";
 
-export class MapContainer extends Component {
+class MapContainer extends Component {
 	//const placesToDisplay: [];
 	//code session with Danny J. Smith
 	/*handleClick = (venue) => {
@@ -73,13 +73,12 @@ export class MapContainer extends Component {
 						lng: -5.1665916
 					}}
 				>
-					const allPlaces: [];
-					{this.props.allPlaces.map((placeName, index) => 
+					{this.props.places.map((placeName, index) => 
 						<Marker 
 							ref={placeName.title}
 							title={placeName.title}
 							key={index}
-							name={location.name} //dr
+							name={placeName.name} //dr
 							onClick={this.onMarkerClick} 
 							/>
 					)}

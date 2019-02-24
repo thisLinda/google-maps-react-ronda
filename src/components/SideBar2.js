@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import MapContainer from "./MapContainer.js";
-import { settings } from "cluster";
 
 class SideBar extends Component {
-  state = { //dr
+  state = { 
     places: [],
     query: "",
     searchVenues: [],
     menuOpen: false,
-    filteredPlace: "" //cp
+    selectedPlaces: []
   }
 
   updateQuery = (query) => { //dr
@@ -26,10 +25,10 @@ class SideBar extends Component {
   };
 
   searchVenue = (query) => { //dr
-    const updatedPlaces = this.state.places.filter(venue =>
+    const filteredPlaces = this.props.places.filter(venue =>
       venue.name.toLowerCase().includes(query.toLowerCase())
     );
-    this.setState({ filteredPlaces: updatedPlaces });
+    this.setState({ selectedPlaces: filteredPlaces });
   };
 
   showMenu = () => {
@@ -38,21 +37,38 @@ class SideBar extends Component {
     });
   };
 
+  setActiveMarker = (marker) => {
+    document.querySelector(`[markerName="${marker}"]`).click();
+  }
+
   componentWillMount() {
     this.setState({ allVenues: this.props.activeMarkers })
   }
 
   render() {
     return (
-      <div className="sidebar">
-        <h2 className="sidebar-title">Recommended!</h2>
-        {this.state.menuOpen && (
-          //<Settings
-            <locations={this.state.searchVenues}
-            query={this.state.query}
-            updateQuery={this.updateQuery}
-          />
-        )}
+      <div id="sidebar-content">
+        <div className="sidebar">
+          <h2 className="sidebar-title">Recommended!</h2>
+          <input aria-label="Search Filter" className="filter" type="text"
+            placeholder="search by name"
+            tabIndex="0"
+            onChange = {(event) => this.updateQuery(event.target.value)}>
+          </input>
+            <ul className="venueslist">
+              {this.state.selectedPlaces.map((venue, id) =>
+              <li
+                className="location"
+                key={venue.id}
+                role="button">
+                {venue.name}
+              </li>
+            )}
+          </ul>
+          <div id="map">
+            <MapContainer places={this.state.selectedPlaces} setActiveMarker={this.setActiveMarker} />
+          </div>
+        </div>
       </div>
     );
   }

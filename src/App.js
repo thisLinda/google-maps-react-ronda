@@ -1,18 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
-//import MapContainer from "./components/MapContainer";
-//import locations from "./locations.json";
-import SideBar2 from "./components/SideBar2.js";
+import SideBar2 from "./components/SideBar2";
 
 class App extends Component {
-  /*state = {
-    showInfoWindow: false,
-    activeMarker: {},
-    selectedVenue: {},
-		//markers: locations,
-		markers: []
-	};*/
-	state = {
+state = {
 		places: [
 		{
 			"name": "Bar El Convento",
@@ -136,26 +126,9 @@ class App extends Component {
 		]
 	}
 
-	/*componentDidMount() {
-		this.setState({markers: locations})
-	}*/
-
 	render() {
 		return (
-			/*<main>
-				<div>*/
-					<SideBar2 activeMarkers={this.state.places} />
-			/*	</div>
-			</main>*/
-			/*<div className="App">
-				<MapContainer
-					markers={this.state.markers}
-					showInfoWindow={this.state.showInfoWindow}
-					onMarkerClick={this.state.onMarkerClick}
-					activeMarker={this.state.activeMarker}
-					selectedVenue={this.state.selectedVenue}
-				/>
-			</div>*/
+			<SideBar2 activeMarkers={this.state.places} />
 		)
 	}
 }
