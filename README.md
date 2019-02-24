@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
+https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ 
+
+
+
+
+https://www.npmjs.com/package/react-responsive-modal
 ## Available Scripts
 
 In the project directory, you can run:
