@@ -1,7 +1,7 @@
-## A Note About this Project (bootstrapped with create-react-app)
-This repo is the final student project for Udacity's Front-End Web Development course. One of the positive aspects from being so behind in the course was the ability to learn from others as they progressed through this project for months before me. I learned a lot from what they shared on Slack creating a rather large gist for later reference--certainly useful. My decision to utilize the Google-Maps-React library was a direct result of putting the experiences of others to work for me.
+## A Note About this Project
+This repo (bootstrapped with create-react-app) is the final student project for Udacity's Front-End Web Development course. One of the positive aspects from being so behind in the course was the ability to learn from others as they progressed through this project for months before me. I learned a lot from what they shared on Slack creating a rather large gist for later reference--certainly useful. My decision to utilize the Google-Maps-React library was a direct result of putting the experiences of others to work for me.
 
-## Online resources
+## Online Resources
 In addition to review of my gist and picking the brains of my cohort on our Slack channel I watched several student/instructor tutorials and reviewed online sources.
 
 Doug Brown Udacity study jam walkthrough https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be<br>
@@ -12,14 +12,13 @@ https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-
 https://www.npmjs.com/package/react-responsive-modal
 
 ## Dependencies
-
 create-react-app<br>
 React<br>
 Google Maps API<br>
 Foursquare API<br>
 
 ## Setup
-Clone this repo from
+Clone this repo from https://github.com/thisLinda/google-maps-react-ronda.git<br>
 Run `npm install`<br>
 Run `npm start`<br>
 Runs the app in the development mode.<br>
