@@ -1,60 +1,101 @@
 import React, { Component } from "react";
-import locations from "../locations.json";
+//import locations from "../locations.json";
 import MapContainer from "./MapContainer.js";
+import { settings } from "cluster";
 
 class SideBar extends Component {
-  state = {
+  /*state = {
     query: '',
-    selectedVenues: [],
+    //allPlaces: [],
+    filteredPlace: ''
+  }*/
+  state = { //dr
+    places: [],
+    query: "",
+    searchVenues: [],
+    menuOpen: false,
+    filteredPlace: "" //cp
   }
 
-  updateQuery = (query) => {
-    this.setState({ query: query }, () => {
-      this.searchVenue(this.state.query);
-    });
+  updateQuery = (query) => { //dr
+    this.setState(
+      { query },
+      () => this.searchVenues(query)
+    );
+  }
+
+  searchVenue = (query) => { //dr
+    const updatedPlaces = this.state.places.filter(venue =>
+      venue.name.toLowerCase().includes(query.toLowerCase())
+      );
+      this.setState({filteredPlaces: updatedPlaces });
+  };
+
+  /*updateQuery = (query) => {
+    this.setState({ query: query, listItemSelected: '' }) 
+    this.search(query);
   }
 
   searchVenue = (query) => {
-    if (!query) {
-      this.setState({ selectedVenues: locations})
+    if (query.length === 0) {
+      this.setState({ allPlaces: this.props.activeMarkers})
     }
     else {
-      const filteredVenues = this.props.markers.filter((marker) => locations.name.toLowerCase().includes(query.toLowerCase()));
-      this.setState({ selectedVenues: filteredVenues });
-    }
+      this.setState.({allPlaces: this.props.activeMarkers.filter(venue => venue.title.toLowerCase().includes(query.trim()toLowerCase()))});
   }
-
-  setActiveMarker = (marker) => {
+*/
+  /*setActiveMarker = (marker) => {
     document.querySelector(`[markerName="${marker}"]`).click();
-  }
+  }*/
+  showMenu = () => {
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    });
+  };
 
-  componentDidMount() {
-    this.setState({selectedVenues: locations})
+  componentWillMount() {
+    this.setState({allVenues: this.props.activeMarkers})
   }
 
   render() {
     return (
-      <div id="main">
+      //<div id="main">
         <div className="sidebar">
           <h2 className="sidebar-title">Recommended!</h2>
-          <p className="source">Google Maps API</p>
-          <input className="filter" 
-          onChange = {(event) => this.updateQuery(event.target.value)}>
-          </input>
-            <ul className="IDK">
-              {this.state.selectedVenues.map((place, id) =>
-              <li
-                className="venuelocation"
-                key={place.id}
-                role="button">
-                {place.name}
-              </li>
-              )}
-            </ul>
+          {/*<input className="filter" 
+            type="text"
+            id="filter"
+            onChange = {(event) => this.updateQuery(event.target.value)}
+            value={this.state.query}
+            className='search'
+          </input>*/}
+        {this.state.menuOpen && (
+          <Settings
+            locations={this.state.searchVenues}
+            query={this.state.query}
+            showMenu={this.showMenu}
+          />
+        )}
         </div>
-          <div id="map"><MapContainer markers={this.state.selectedVenues} setActiveMarker={this.setActiveMarker}/></div>
-      </div>
-    )
+        //enter error boundary
+        {/*{this.state.allPlaces.map((place, index) => (
+          <div
+            className="venuelocation"
+            key={index}
+            onClick={() => this.setState({ filteredPlace: venue.title })}
+          </div>
+        ))
+      </div>}*/
+          <Mapcontainer
+            allPlaces={this.state.allPlaces}
+            venueSelected={this.state.filteredPlace}
+            selectVenue={(venue) => { this.setState({ listItemSelected: filteredPlace }) }}
+          />
+            </div >
+          </div >
+        //</div >
+      )
+    }
   }
 }
 

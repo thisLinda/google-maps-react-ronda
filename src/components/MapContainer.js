@@ -38,6 +38,8 @@ export class MapContainer extends Component {
 		});
 	}
 
+	
+
 		componentDidMount() {
 	}
 
@@ -77,6 +79,7 @@ export class MapContainer extends Component {
 							ref={placeName.title}
 							title={placeName.title}
 							key={index}
+							name={location.name} //dr
 							onClick={this.onMarkerClick} 
 							/>
 					)}

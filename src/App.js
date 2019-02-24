@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 //import MapContainer from "./components/MapContainer";
 //import locations from "./locations.json";
-import SideBar from "./components/SideBar.js";
+import SideBar2 from "./components/SideBar2.js";
 
 class App extends Component {
   /*state = {
@@ -144,7 +144,7 @@ class App extends Component {
 		return (
 			/*<main>
 				<div>*/
-					<SideBar activeMarkers={this.state.places} />
+					<SideBar2 activeMarkers={this.state.places} />
 			/*	</div>
 			</main>*/
 			/*<div className="App">
