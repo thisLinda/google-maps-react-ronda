@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, Marker, /*InfoWindow,*/ GoogleApiWrapper } from "google-maps-react";
-//import locations from "../locations.json";
 
 class MapContainer extends Component {
 	//const placesToDisplay: [];
@@ -38,7 +37,6 @@ class MapContainer extends Component {
 		});
 	}
 
-	
 
 		componentDidMount() {
 	}
@@ -58,14 +56,11 @@ class MapContainer extends Component {
     width: '100vw'
   };
 
-	//const allPlaces: [];
 		return (
-			//<div className="mapcontainer">
-			//const allPlaces: [];
 				<Map
 					google={this.props.google}
 					zoom={16}
-					styles={style}
+					style={style}
 					onClick={() => {this.setState({activeMarker: {}, showInfoWindow: false})}}
 					ref={"map"}
 					initialCenter={{
@@ -82,15 +77,6 @@ class MapContainer extends Component {
 							onClick={this.onMarkerClick} 
 							/>
 					)}
-						{/*<InfoWindow
-							marker={this.props.activeMarker}
-							visible={this.props.showInfoWindow}
-							onClose={this.onClose}
-						>
-							<div>
-								<h4>{this.props.selectedVenue.name}</h4>
-							</div>
-						//</Map></InfoWindow>*/}
 				</Map>
 			//</div>
 		);

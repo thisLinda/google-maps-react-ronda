@@ -10,22 +10,25 @@ class SideBar extends Component {
     selectedPlaces: []
   }
 
-  updateQuery = (query) => { //dr
-    this.setState(
-      { query },
-      () => this.searchVenues(query)
+  updateQuery = (query) => {
+    this.setState({ query: query }, () => 
+      {
+        this.searchVenues(this.state.query);
+      }
     );
   }
 
-  handleChange = query => {
+/*
+  handleChange = (query) => {
     this.setState(
-      { query },
-      () => this.props.updateQuery(query)
-    );
+      { query: query },
+      () => {this.updateQuery(this.state.query)
+      });
   };
+*/
 
-  searchVenue = (query) => { //dr
-    const filteredPlaces = this.props.places.filter(venue =>
+  searchVenues = (query) => {
+    const filteredPlaces = this.state.places.filter(venue =>
       venue.name.toLowerCase().includes(query.toLowerCase())
     );
     this.setState({ selectedPlaces: filteredPlaces });
