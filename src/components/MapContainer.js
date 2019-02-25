@@ -9,7 +9,7 @@ class MapContainer extends Component {
 		showInfoWindow: false,
 		activeMarker: {},
 		animation: null,
-		fetchError: false
+		mapError: false,
 		//selectedPlace: {
 		//	name: "",
 		//	location: ""
@@ -28,7 +28,7 @@ class MapContainer extends Component {
 			showInfoWindow: true,
 			//open: true,
 		});
-		this.getFourSquareInfo(props.position.lat, props.position.lng, props.title)
+		this.getApiData(props.position.lat, props.position.lng, props.title)
 	}
 
 	onMapClick = (props) => {
@@ -52,33 +52,7 @@ class MapContainer extends Component {
 			activeMarker: { markerName: 'none' }
 		});
 	};
-/*
-	//adapted from Doug Brown instructed code
-	componentDidMount = () => {
-		let URL = `https://api.foursquare.com/v2/venues/${places[0].id}/photos?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`;
-			let headers = new Headers();
-			let request = new Request(URL, {
-				method: "GET",
-				headers
-			});
-			fetch(request)
-				.then(response => response.json())
-				.then(json => {
-					const places = json.response.venues;
-					this.setState(
-						{
-							places: places,
-							searchedPlaces: places
-						},
-						() => console.log(this.state)
-					);
-				})
-				.catch(error => {
-					alert("no response from FourSquare");
-				}
-			);
-  	};
-*/
+
 	onClose = props => {
 		if (this.state.showInfoWindow) {
 			this.setState({
@@ -96,15 +70,38 @@ class MapContainer extends Component {
 			selectedPlace: selectedVenue
 		});
 	}
-/*
-	getVenueData = (venue = places[0], marker) => {
-		fetch(`${API}/venues/search?ll=${lat},${lng}&limit=${SEARCH_RESULTS}&radius=${RADIUS_M}&query=${name}
-    	&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`)
-			.then(res => res.json())
-			.then(data => this.displayVenueData(data.response.venues[0], marker))
-			.catch(err => this.setState({ fetchError: true, activeMarker: marker, showingInfoWindow: true }));
+
+	getApiData = (lat, lng, name) => {
+		return API.getSearchResult(lat, lng, name).then(venueId => {
+			if (venueId === 'error')
+				this.setState({
+					likes: 'Error loading Content',
+					photo: 'error'
+				});
+			else {
+				API.getDetails(venueId).then(response => {
+					if (response === 'error' || response.meta.code !== 200)
+						this.setState({
+							likes: 'Error loading content',
+							photo: 'error'
+						});
+					else {
+						if ('bestPhoto' in response.response.venue)
+							this.setState({ photo: response.response.venue.bestPhoto.prefix + '150' + response.response.venue.bestPhoto.suffix });
+						else
+							this.setState({ photo: 'error' });
+					}
+				})
+			}
+		})
 	}
-*/
+
+	componentDidMount() {
+		window.gm_authFailure = () => {
+			this.setState({ mapError: true });
+		}
+	}
+
 	render() {
 		const style = {
 			height: '100vh',
@@ -119,6 +116,7 @@ class MapContainer extends Component {
 					<Modal open={open} onClose={this.onClose} center>
 					</Modal>
 				</div>
+				{this.state.mapError ? (<div className="map-error"><p>Map load error!</p></div>) :
 					<Map
 						google={this.props.google}
 						zoom={16}

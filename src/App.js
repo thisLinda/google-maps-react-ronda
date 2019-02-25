@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import SideBar2 from "./components/SideBar2";
 
-
 class App extends Component {
 state = {
+		//mapError: false,
 		places: [
 		{
 			"name": "Bar El Convento",
@@ -127,12 +127,12 @@ state = {
 		]
 	}
 
-	componentDidMount() {
+	/*componentDidMount() {
 		window.gm_authFailure = () => {
 			this.setState({mapError: true});
 		}
 	}
-
+*/
 	render() {
 		return (
 			<SideBar2 activeMarkers={this.state.places} />

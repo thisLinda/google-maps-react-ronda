@@ -11,10 +11,10 @@ export const getSearchResult = (lat, lng, name) =>
     .then(response => response.json())
     .then(response => response.response.venues[0].id)
     .catch('error')
-/**
-*Use FourSquare id to return array of details about a place.
-*/
+
 export const getDetails = (id) =>
   fetch(`${API}/venues/${id}?&client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`)
     .then(res => res.json())
     .catch('error')
+
+export default API    
