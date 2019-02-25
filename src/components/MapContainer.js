@@ -1,33 +1,34 @@
 import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper }
 from "google-maps-react";
+import API from "./API.js";
 import Modal from "react-responsive-modal";
-
-const FS_CLIENT = "BOKLBSA405VVTBJBRYXPUVIBARKGSHCIKX23JCBSZYOO25WY";
-const FS_SECRET = "VMCWHSF3WDJPJP1FUHQCICHWGIAZGWM1XNQ3BHQJDKYB2RO5";
-const FS_VERSION = "20190224";
-let places;
 
 class MapContainer extends Component {
 	state = {
 		showInfoWindow: false,
 		activeMarker: {},
 		animation: null,
-		open: false,
-		lat: 36.7421339,
-		lon: -5.1665916,
-		zoom: 14,
-		selectedVenue: {},
+		fetchError: false
+		//selectedPlace: {
+		//	name: "",
+		//	location: ""
+		}
+		//open: false,
+		//lat: 36.7421339,
+		//lon: -5.1665916,
+		//zoom: 14,
+		//selectedVenue: {},
 		//markers: locations
-  };
 
 	onMarkerClick = (props, marker, event) => {
 		this.setState({
 			selectedVenue: props,
 			activeMarker: marker,
 			showInfoWindow: true,
-			open: true,
+			//open: true,
 		});
+		this.getFourSquareInfo(props.position.lat, props.position.lng, props.title)
 	}
 
 	onMapClick = (props) => {
@@ -51,7 +52,7 @@ class MapContainer extends Component {
 			activeMarker: { markerName: 'none' }
 		});
 	};
-
+/*
 	//adapted from Doug Brown instructed code
 	componentDidMount = () => {
 		let URL = `https://api.foursquare.com/v2/venues/${places[0].id}/photos?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`;
@@ -77,7 +78,7 @@ class MapContainer extends Component {
 				}
 			);
   	};
-
+*/
 	onClose = props => {
 		if (this.state.showInfoWindow) {
 			this.setState({
@@ -87,6 +88,23 @@ class MapContainer extends Component {
 		}
 	};
 
+	displayVenueData = (selectedVenue, marker) => {
+		console.log(selectedVenue);
+		this.setState({
+			showInfoWindow: true,
+			activeMarker: marker,
+			selectedPlace: selectedVenue
+		});
+	}
+/*
+	getVenueData = (venue = places[0], marker) => {
+		fetch(`${API}/venues/search?ll=${lat},${lng}&limit=${SEARCH_RESULTS}&radius=${RADIUS_M}&query=${name}
+    	&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=${VERSION}`)
+			.then(res => res.json())
+			.then(data => this.displayVenueData(data.response.venues[0], marker))
+			.catch(err => this.setState({ fetchError: true, activeMarker: marker, showingInfoWindow: true }));
+	}
+*/
 	render() {
 		const style = {
 			height: '100vh',

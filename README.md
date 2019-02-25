@@ -14,6 +14,7 @@ https://www.npmjs.com/package/react-responsive-modal
 ## Dependencies
 create-react-app<br>
 React<br>
+Axios<brn>
 Google Maps API<br>
 Foursquare API<br>
 

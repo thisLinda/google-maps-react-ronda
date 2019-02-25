@@ -127,6 +127,12 @@ state = {
 		]
 	}
 
+	componentDidMount() {
+		window.gm_authFailure = () => {
+			this.setState({mapError: true});
+		}
+	}
+
 	render() {
 		return (
 			<SideBar2 activeMarkers={this.state.places} />
