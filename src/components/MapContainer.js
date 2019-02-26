@@ -9,7 +9,6 @@ class MapContainer extends Component {
 		showInfoWindow: false,
 		activeMarker: {},
 		animation: null,
-		mapError: false,
 		//selectedPlace: {
 		//	name: "",
 		//	location: ""
@@ -116,7 +115,6 @@ class MapContainer extends Component {
 					<Modal open={open} onClose={this.onClose} center>
 					</Modal>
 				</div>
-				{this.state.mapError ? (<div className="map-error"><p>Map load error!</p></div>) :
 					<Map
 						google={this.props.google}
 						zoom={16}
@@ -146,14 +144,7 @@ class MapContainer extends Component {
 									<h2 tabIndex="0" style={{textAlign:"center"}}>
 										{this.state.activeMarker.name}
 									</h2>
-									{this.state.photo === "pic loading"} ?
-										<h3 tabIndex="0" style={{textAlign:"center"}}>Pic Loading</h3> :
-										this.state.photo === "error" ?
-										<h3 tabIndex="0" style={{textAlign:"center"}}>Unable to load</h3>
-										<div style={{textAlign: "center"}}>
-											<img tabIndex="0" src={this.state.photo} alt={this.state.activeMarker.name + ' photo'} />
-										</div>
-									</div>
+								</div>
 						</InfoWindow>
 					</Map>
 			</div>
