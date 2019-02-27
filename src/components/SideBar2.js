@@ -2,23 +2,21 @@ import React, { Component } from "react";
 import MapContainer from "./MapContainer.js";
 
 class SideBar extends Component {
-  state = { 
+  state = {
     places: [],
     query: "",
     searchVenues: [],
     menuOpen: false,
-    selectedPlaces: []
-  }
+    selectedPlaces: this.props.activeMarkers
+  };
 
-  updateQuery = (query) => {
-    this.setState({ query: query }, () => 
-      {
-        this.searchVenues(this.state.query);
-      }
-    );
-  }
+  updateQuery = query => {
+    this.setState({ query: query }, () => {
+      this.searchVenues(this.state.query);
+    });
+  };
 
-/*
+  /*
   handleChange = (query) => {
     this.setState(
       { query: query },
@@ -27,11 +25,11 @@ class SideBar extends Component {
   };
 */
 
-  searchVenues = (query) => {
-    const filteredPlaces = this.state.places.filter(venue =>
+  searchVenues = query => {
+    const selectedPlaces = this.state.places.filter(venue =>
       venue.name.toLowerCase().includes(query.toLowerCase())
     );
-    this.setState({ selectedPlaces: filteredPlaces });
+    this.setState({ selectedPlaces });
   };
 
   showMenu = () => {
@@ -40,12 +38,12 @@ class SideBar extends Component {
     });
   };
 
-  setActiveMarker = (marker) => {
+  setActiveMarker = marker => {
     document.querySelector(`[markerName="${marker}"]`).click();
-  }
+  };
 
   componentWillMount() {
-    this.setState({ allVenues: this.props.activeMarkers })
+    this.setState({ places: this.props.activeMarkers });
   }
 
   render() {
@@ -53,23 +51,30 @@ class SideBar extends Component {
       <div id="sidebar-content">
         <div className="sidebar">
           <h2 className="sidebar-title">Recommended!</h2>
-          <input aria-label="Search Filter" className="filter" type="text"
+          <input
+            aria-label="Search Filter"
+            className="filter"
+            type="text"
             placeholder="search by name"
             tabIndex="0"
-            onChange = {(event) => this.updateQuery(event.target.value)}>
-          </input>
-            <ul className="venueslist">
-              {this.state.selectedPlaces.map((venue, id) =>
+            onChange={event => this.updateQuery(event.target.value)}
+          />
+          <ul className="venueslist">
+            {this.state.selectedPlaces.map((venue, id) => (
               <li
                 className="location"
-                key={venue.id}
-                role="button">
+                key={venue.name}
+                role="button"
+              >
                 {venue.name}
               </li>
-            )}
+            ))}
           </ul>
           <div id="map">
-            <MapContainer places={this.state.selectedPlaces} setActiveMarker={this.setActiveMarker} />
+            <MapContainer
+              places={this.state.selectedPlaces}
+              setActiveMarker={this.setActiveMarker}
+            />
           </div>
         </div>
       </div>
@@ -77,4 +82,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar
+export default SideBar;
