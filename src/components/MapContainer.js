@@ -18,6 +18,10 @@ class MapContainer extends Component {
       activeMarker: marker,
       showInfoWindow: true
     });
+    marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+    setTimeout(() => {
+      marker.setAnimation(null);
+    }, 2000);
     this.getApiData(props.position.lat, props.position.lng, props.name);
   };
 
@@ -128,7 +132,7 @@ class MapContainer extends Component {
                 onClick={this.onMarkerClick}
                 position={placeName.pos}
                 title={placeName.name}
-                animation = {this.state.activeMarker.length === 1 ? this.props.google.maps.Animation.BOUNCE : this.props.google.maps.Animation.DROP}
+                animation = {this.props.google.maps.Animation.DROP}
               />
             );
           })}
