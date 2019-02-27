@@ -74,15 +74,13 @@ class MapContainer extends Component {
     return API.getSearchResult(lat, lng, name).then(venueId => {
       if (venueId === "error")
         this.setState({
-          likes: "Error loading Content",
-          photo: "error"
+          photo: "null"
         });
       else {
         API.getDetails(venueId).then(response => {
           if (response === "error" || response.meta.code !== 200) {
             this.setState({
-              likes: "Error loading content",
-              photo: "error"
+              photo: "null"
             });
           } else {
             if ("bestPhoto" in response.response.venue)
@@ -92,7 +90,7 @@ class MapContainer extends Component {
                   "150" +
                   response.response.venue.bestPhoto.suffix
               });
-            else this.setState({ photo: "error" });
+            else this.setState({ photo: "null" });
           }
         });
       }

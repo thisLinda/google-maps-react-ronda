@@ -16,15 +16,6 @@ class SideBar extends Component {
     });
   };
 
-  /*
-  handleChange = (query) => {
-    this.setState(
-      { query: query },
-      () => {this.updateQuery(this.state.query)
-      });
-  };
-*/
-
   searchVenues = query => {
     const selectedPlaces = this.state.places.filter(venue =>
       venue.name.toLowerCase().includes(query.toLowerCase())
