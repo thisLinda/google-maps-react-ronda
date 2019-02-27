@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
-// import API from "./API.js";
 import Modal from "react-responsive-modal";
 import * as API from "./API";
 
@@ -11,15 +10,7 @@ class MapContainer extends Component {
     animation: null,
     photo: "",
     open: false
-    //selectedPlace: {
-    //	name: "",
-    //	location: ""
   };
-  //lat: 36.7421339,
-  //lon: -5.1665916,
-  //zoom: 14,
-  //selectedVenue: {},
-  //markers: locations
 
   onMarkerClick = (props, marker, event) => {
     this.setState({
@@ -117,7 +108,7 @@ class MapContainer extends Component {
         </div>
         <Map
           google={this.props.google}
-          zoom={16}
+          zoom={15}
           style={style}
           onClick={() => {
             this.setState({ activeMarker: {}, showInfoWindow: false });
