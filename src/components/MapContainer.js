@@ -127,6 +127,7 @@ class MapContainer extends Component {
                 key={placeName.name}
                 onClick={this.onMarkerClick}
                 position={placeName.pos}
+                title={placeName.name}
                 animation = {this.state.activeMarker.length === 1 ? this.props.google.maps.Animation.BOUNCE : this.props.google.maps.Animation.DROP}
               />
             );
