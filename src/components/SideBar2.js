@@ -50,7 +50,7 @@ class SideBar extends Component {
     return (
       <div id="sidebar-content">
         <div className="sidebar">
-          <h2 className="sidebar-title">Recommended!</h2>
+          <h1 className="sidebar-title">Recommended!</h1>
           <input
             aria-label="Search Filter"
             className="filter"
