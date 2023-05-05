@@ -1,7 +1,7 @@
 ![ronda](https://user-images.githubusercontent.com/34631602/236461107-18cdc03c-f0f4-41a8-9e98-ce14f12e0d7c.png)
 
 ## A Note About this Project
-This repo (bootstrapped with create-react-app) is the final student project for Udacity's Front-End Web Development course.
+This repo (bootstrapped with create-react-app) is the final student project for Udacity's Front-End Web Development course. The map documents where I ate my favorite tapas while studying Spanish for a couple of weeks in Ronda in 2018. (Side note: it was my search for online Spanish learning that led me to learning code instead.)
 
 ## Online Resources
 Student/instructor tutorials and online sources helpful in completion of the project.
