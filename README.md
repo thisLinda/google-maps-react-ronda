@@ -1,10 +1,10 @@
-## A Note About this Project
-This repo (bootstrapped with create-react-app) is the final student project for Udacity's Front-End Web Development course. One of the positive aspects from being so behind in the course was the ability to learn from others as they progressed through this project for months before me. I learned a lot from what they shared on Slack creating a rather large gist for later reference--certainly useful. My decision to utilize the Google-Maps-React library was a direct result of putting the experiences of others to work for me.
+![ronda](https://user-images.githubusercontent.com/34631602/236461107-18cdc03c-f0f4-41a8-9e98-ce14f12e0d7c.png)
 
-I learned the simplest of things completing this project... I need to track names/purposes in a more organized manner.
+## A Note About this Project
+This repo (bootstrapped with create-react-app) is the final student project for Udacity's Front-End Web Development course.
 
 ## Online Resources
-In addition to review of my gist and picking the brains of my cohort on our Slack channel I watched several student/instructor tutorials and reviewed online sources.
+Student/instructor tutorials and online sources helpful in completion of the project.
 
 Doug Brown Udacity study jam walkthrough https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be<br>
 Ryan Waite Udacity walkthrough https://www.youtube.com/watch?v=LvQe7xrUh7I&index=6&list=PLKC17wty6rS1XVZbRlWjYU0WVsIoJyO3s&t=0s<br>
@@ -33,3 +33,5 @@ The default service worker is used in this app and only works in production buil
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+About [Ronda](https://www.andalucia.com/ronda/home.htm).
